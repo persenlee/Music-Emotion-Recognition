@@ -13,7 +13,7 @@ from sklearn.metrics import confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
 
-data = pd.read_csv('/Users/persen/Documents/Music-Emotion-Recognition/Emotion_features.csv')
+data = pd.read_csv('/root/Music-Emotion-Recognition/Emotion_features.csv')
 feature = data.iloc[:, 4:]
 featureName = list(feature)
 color = ['red' if l==1 else 'green' if l==2 else 'blue' if l==3 else 'orange' for l in data['label']]
