@@ -11,13 +11,11 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.cross_validation import train_test_split
-from pandas.tools.plotting import scatter_matrix
+from sklearn.model_selection import train_test_split
+from pandas.plotting import scatter_matrix
 
-s
-
-data = pd.read_csv('Dataset/Emotion_data.csv')
-feature = data.ix[:, 'tempo':]
+data = pd.read_csv('/Users/persen/Documents/Music-Emotion-Recognition/Emotion_features.csv')
+feature = data.iloc[:, 4:]
 labels = list(feature)
 color = ['red' if l==1 else 'green' if l==2 else 'blue' if l==3 else 'orange' for l in data['label']]
 
@@ -33,7 +31,7 @@ index = 0
 
 for random_seed in range(1, 11):
     features = array[:, 5:]
-    labels = data.ix[:, 'class'].dropna()
+    labels = data.iloc[:, 3].dropna()
     test_size = 0.30
     
     train_d, test_d, train_l, test_l = train_test_split(features, labels, test_size=test_size, random_state=random_seed)
@@ -51,7 +49,7 @@ plt.figure(figsize=(10, 10))
 plt.xlabel('kNN Neighbors for k=1,2...10')
 plt.ylabel('Accuracy Score')
 plt.title('kNN Classifier Results')
-plt.ylim(0, 1)
+# plt.ylim(0, 1)
 plt.scatter(xlabel, result, color=color)
-plt.savefig('10-folds kNN Result.png')
+# plt.savefig('10-folds kNN Result.png')
 plt.show()
