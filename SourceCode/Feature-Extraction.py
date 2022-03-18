@@ -83,7 +83,7 @@ def extract_feature(path):
 
         # Reading Song
         songname = path + line
-        y, sr = librosa.load(songname, duration=60)
+        y, sr = librosa.load(songname, duration=120)
         S = np.abs(librosa.stft(y))
         
         # Extracting Features
@@ -229,7 +229,7 @@ def extract_feature(path):
 
     # Converting Dataframe into CSV Excel and JSON file
     feature_set.to_csv('Data/Emotion_features.csv')
-    feature_set.to_json('Data/Emotion_features.json')
+    # feature_set.to_json('Data/Emotion_features.json')
     
 # Extracting Feature Function Call
-extract_feature('/root/Music-Emotion-Recognition/Data/')
+extract_feature('/root/Music-Emotion-Recognition/Data/music/')
